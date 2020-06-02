@@ -47,14 +47,19 @@ export class TableComponent implements OnInit {
   
   data$: Observable<Data[]>;
   filter = new FormControl('');
-  constructor(pipe: DecimalPipe,private tableser:TableserviceService) { 
-    this.data$ = this.filter.valueChanges.pipe(
-      startWith(''),
-      map(text => search(text, pipe))
-    );
+  constructor(private pipe: DecimalPipe,private tableser:TableserviceService) { 
+    this.tableser.filterval.subscribe(data=>{
+      this.filter=data;
+     
+      this.data$ = this.filter.valueChanges.pipe(
+        startWith(''),
+        map(text => search(text, pipe))
+      );
+    })
   }
 
   ngOnInit(): void {
+    
   }
 
   details(i){

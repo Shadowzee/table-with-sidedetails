@@ -7,11 +7,13 @@ import { TableComponent } from './table/table.component';
 import { SideDetailsComponent } from './side-details/side-details.component';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { NavbarComponent } from './navbar/navbar.component';
 @NgModule({
   declarations: [
     AppComponent,
     TableComponent,
-    SideDetailsComponent
+    SideDetailsComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,
