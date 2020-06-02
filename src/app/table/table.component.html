@@ -1,0 +1,28 @@
+<form>
+    <div class="form-group form-inline">
+        Full text search: <input class="form-control ml-2" type="text" [formControl]="filter"/>
+    </div>
+  </form>
+  
+  <table class="table table-striped">
+    <thead>
+    <tr>
+      <th scope="col">Date</th>
+      <th scope="col">List Name</th>
+      <th scope="col">No of Entities</th>
+      <th scope="col">Actions</th>
+      <th scope="col"></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let country of countries$ | async; index as i">
+     
+      <td>
+        <ngb-highlight [result]="country.date" [term]="filter.value"></ngb-highlight>
+      </td>
+      <td><ngb-highlight [result]="country.listName" [term]="filter.value"></ngb-highlight></td>
+      <td><ngb-highlight [result]="country.entity | number" [term]="filter.value"></ngb-highlight></td>
+      <td><button (click)="details(i)">Details</button></td>
+    </tr>
+    </tbody>
+  </table>
