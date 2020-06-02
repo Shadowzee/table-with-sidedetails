@@ -4,13 +4,14 @@ import { FormControl } from '@angular/forms';
 
 import { Observable } from 'rxjs';
 import { map, startWith } from 'rxjs/operators';
+import { TableserviceService } from '../tableservice.service';
 interface Data {
   date: string;
   listName: string;
   entity: number;
   action: string;
 }
-const COUNTRIES: Data[] = [
+const data: Data[] = [
   {
     date: '26/8',
     listName: 'Competitive no',
@@ -27,7 +28,7 @@ const COUNTRIES: Data[] = [
 ];
 
 function search(text: string, pipe: PipeTransform): Data[] {
-  return COUNTRIES.filter(country => {
+  return data.filter(country => {
     const term = text.toLowerCase();
     return country.date.toLowerCase().includes(term)
     ||country.listName.toLowerCase().includes(term)
@@ -44,10 +45,10 @@ function search(text: string, pipe: PipeTransform): Data[] {
 export class TableComponent implements OnInit {
 
   
-  countries$: Observable<Data[]>;
+  data$: Observable<Data[]>;
   filter = new FormControl('');
-  constructor(pipe: DecimalPipe) { 
-    this.countries$ = this.filter.valueChanges.pipe(
+  constructor(pipe: DecimalPipe,private tableser:TableserviceService) { 
+    this.data$ = this.filter.valueChanges.pipe(
       startWith(''),
       map(text => search(text, pipe))
     );
@@ -57,6 +58,6 @@ export class TableComponent implements OnInit {
   }
 
   details(i){
-
+this.tableser.flagtrue(i);
   }
 }
