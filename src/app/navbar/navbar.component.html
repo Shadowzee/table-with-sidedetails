@@ -1,17 +1,21 @@
-<ul class="nav">
+<ul class="nav bgcolor justify">
+    <span class="display">
     <li class="nav-item">
-      <a class="nav-link active" href="#">Saved List</a>
+      <a class="nav-link list active" href="#">Saved List</a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" href="#">Saved Filters</a>
+      <a class="nav-link filter" href="#">Saved Filters</a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" href="#">Search History</a>
+      <a class="nav-link filter" href="#">Search History</a>
     </li>
+</span>
     <li class="nav-item">
+        <div class="mr10">
         <form>
             <div class="form-group form-inline">
-              <input placeholder="search" class="form-control ml-2" type="text" (change)="filterval()" [formControl]="filter"/>
+              <input placeholder="Search" class="form-control ml-2 wd400" type="text" (change)="filterval()" [formControl]="filter"/>
             </div>
-          </form> </li>
+          </form> 
+        </div></li>
   </ul>
