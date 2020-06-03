@@ -47,7 +47,12 @@ export class TableComponent implements OnInit {
   
   data$: Observable<Data[]>;
   filter = new FormControl('');
+  setClickedRow : Function;
+  selectedRow;
   constructor(private pipe: DecimalPipe,private tableser:TableserviceService) { 
+    this.setClickedRow = function(index){
+      this.selectedRow = index;
+  }
     this.tableser.filterval.subscribe(data=>{
       this.filter=data;
      

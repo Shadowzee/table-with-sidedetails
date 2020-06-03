@@ -14,14 +14,14 @@
     </tr>
     </thead>
     <tbody>
-    <tr *ngFor="let country of data$ | async; index as i">
+    <tr *ngFor="let country of data$ | async; index as i"  (click)="setClickedRow(i)" [class.active]="i == selectedRow">
      
       <td>
         <ngb-highlight class="date" [result]="country.date" [term]="filter.value"></ngb-highlight>
       </td>
       <td><b><ngb-highlight [result]="country.listName" [term]="filter.value"></ngb-highlight></b></td>
       <td><ngb-highlight [result]="country.entity | number" [term]="filter.value"></ngb-highlight></td>
-     <td><i class="fa fa-address-book" aria-hidden="true"></i></td>
+     <td  class="iconcolor" [class.iconcolor2]="i == selectedRow" ><i class="fa fa-envelope" aria-hidden="true"> </i>&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-share-alt" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-pencil-square" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-trash" aria-hidden="true"></i></td>
       <td><button class= "button" (click)="details(i)">Details</button></td>
     </tr>
     </tbody>
